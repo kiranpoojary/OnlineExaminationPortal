@@ -1,0 +1,337 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+
+
+
+<script>
+	//set minutes
+	var hours = 0;
+	var mins = 0;
+	var secs = 0;
+
+	//countdown function is evoked when page is loaded 
+	function countdown(a) {
+		secs = a * 60;
+
+		setTimeout('Decrement()', 60);
+	}
+
+	//Decrement function decrement the value. 
+	function Decrement() {
+		if (document.getElementById) {
+			hours = document.getElementById("hours");
+			minutes = document.getElementById("minutes");
+			seconds = document.getElementById("seconds");
+			
+			
+			
+			hours.value = gethours();
+			minutes.value = getminutes();
+			seconds.value = getseconds();
+
+			secs--;
+			if(secs>0)
+				{
+					setTimeout('Decrement()', 1000);
+				}
+			else
+				{
+					alert("timeUp");
+				}
+				
+				
+
+			/*
+			if (secs < 59) {
+				seconds.value = secs;
+			}
+
+			
+			else {
+				hours.value = gethours();
+				minutes.value = getminutes();
+				seconds.value = getseconds();
+			}
+			
+			if (mins < 1) {
+				hours.style.color = "red";
+				minutes.style.color = "red";
+				seconds.style.color = "red";
+			}
+			
+			if (mins < 0) {
+				alert('time up');
+				hours.value = 0;
+				minutes.value = 0;
+				seconds.value = 0;
+			}
+			
+			else {
+				alert("decrement FROM "+secs);
+				secs--;
+				alert("To"+secs);
+				setTimeout('Decrement()', 1000);
+			}
+			*/
+		}
+	}
+
+	function gethours() {
+		//take minutes remaining (as seconds) away  
+		//from total seconds remaining 
+		//alert(secs);
+		if(secs>=(60*60))
+			{
+				hours= Math.floor(secs / (60 * 60));
+				//alert("hour value"+hours);
+			}
+		else
+			{
+			//alert("hour value"+hours);
+				hours=0;
+			}
+			
+		
+		return hours;
+	}
+
+	function getminutes() {
+		//minutes is seconds divided by 60, rounded down 
+		//alert("3");
+		mins = Math.floor((secs-(hours*60*60))/60);
+		//alert("4 minutes value "+mins);
+		return mins;
+	}
+
+	function getseconds() {
+		//take minutes remaining (as seconds) away  
+		//from total seconds remaining 
+		//alert(secs-((hours*60*60)+(mins*60)));
+		//alert("seconds value"+secs%60);
+		return (secs%60);
+	}
+</script>
+</head>
+<!-- onload function is evoke when page is load -->
+<!--countdown function is called when page is loaded -->
+
+
+
+
+<link rel="icon" href="images/favicon.ico" type="image/ico" />
+
+<title>Online Exam Portal |</title>
+
+<!-- Bootstrap -->
+<link href="../vendors/bootstrap/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<!-- Font Awesome -->
+<link href="../vendors/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet">
+<!-- NProgress -->
+<link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+<!-- iCheck -->
+<link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+
+<!-- bootstrap-progressbar -->
+<link
+	href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css"
+	rel="stylesheet">
+<!-- JQVMap -->
+<link href="../vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet" />
+<!-- bootstrap-daterangepicker -->
+<link href="../vendors/bootstrap-daterangepicker/daterangepicker.css"
+	rel="stylesheet">
+
+<!-- Custom Theme Style -->
+<link href="../build/css/custom.min.css" rel="stylesheet">
+
+<script src="../vendors/jquery/dist/jquery.min.js"></script>
+<link href="../vendors/bootstrap/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<script type="text/javascript"
+	src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<style type="text/css">
+@import
+	url("//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css")
+	;
+
+.navbar-icon-top .navbar-nav .nav-link>.fa {
+	position: relative;
+	width: 36px;
+	font-size: 24px;
+}
+
+.navbar-icon-top .navbar-nav .nav-link>.fa>.badge {
+	font-size: 0.75rem;
+	position: absolute;
+	right: 0;
+	font-family: sans-serif;
+}
+
+.navbar-icon-top .navbar-nav .nav-link>.fa {
+	top: 3px;
+	line-height: 12px;
+}
+
+.navbar-icon-top .navbar-nav .nav-link>.fa>.badge {
+	top: -10px;
+}
+
+@media ( min-width : 576px) {
+	.navbar-icon-top.navbar-expand-sm .navbar-nav .nav-link {
+		text-align: center;
+		display: table-cell;
+		height: 70px;
+		vertical-align: middle;
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+	.navbar-icon-top.navbar-expand-sm .navbar-nav .nav-link>.fa {
+		display: block;
+		width: 48px;
+		margin: 2px auto 4px auto;
+		top: 0;
+		line-height: 24px;
+	}
+	.navbar-icon-top.navbar-expand-sm .navbar-nav .nav-link>.fa>.badge {
+		top: -7px;
+	}
+}
+
+@media ( min-width : 768px) {
+	.navbar-icon-top.navbar-expand-md .navbar-nav .nav-link {
+		text-align: center;
+		display: table-cell;
+		height: 70px;
+		vertical-align: middle;
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+	.navbar-icon-top.navbar-expand-md .navbar-nav .nav-link>.fa {
+		display: block;
+		width: 48px;
+		margin: 2px auto 4px auto;
+		top: 0;
+		line-height: 24px;
+	}
+	.navbar-icon-top.navbar-expand-md .navbar-nav .nav-link>.fa>.badge {
+		top: -7px;
+	}
+}
+
+@media ( min-width : 992px) {
+	.navbar-icon-top.navbar-expand-lg .navbar-nav .nav-link {
+		text-align: center;
+		display: table-cell;
+		height: 70px;
+		vertical-align: middle;
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+	.navbar-icon-top.navbar-expand-lg .navbar-nav .nav-link>.fa {
+		display: block;
+		width: 48px;
+		margin: 2px auto 4px auto;
+		top: 0;
+		line-height: 24px;
+	}
+	.navbar-icon-top.navbar-expand-lg .navbar-nav .nav-link>.fa>.badge {
+		top: -7px;
+	}
+}
+
+@media ( min-width : 1200px) {
+	.navbar-icon-top.navbar-expand-xl .navbar-nav .nav-link {
+		text-align: center;
+		display: table-cell;
+		height: 70px;
+		vertical-align: middle;
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+	.navbar-icon-top.navbar-expand-xl .navbar-nav .nav-link>.fa {
+		display: block;
+		width: 48px;
+		margin: 2px auto 4px auto;
+		top: 0;
+		line-height: 24px;
+	}
+	.navbar-icon-top.navbar-expand-xl .navbar-nav .nav-link>.fa>.badge {
+		top: -7px;
+	}
+}
+</style>
+</head>
+<body onload="countdown(61);">
+	<nav
+		class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
+	<a class="navbar-brand" href="#">Online Examination Portal</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse"
+		data-target="#navbarSupportedContent"
+		aria-controls="navbarSupportedContent" aria-expanded="false"
+		aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item active"><a class="nav-link" href="#"> <i
+					class="fa fa-home"></i> Home <span class="sr-only">(current)</span>
+			</a></li>
+			<li class="nav-item"><a class="nav-link" href="#"> <i
+					class="fa fa-envelope-o"> <span class="badge badge-danger">11</span>
+				</i> Link
+			</a></li>
+			<li class="nav-item"><a class="nav-link disabled" href="#">
+					<i class="fa fa-envelope-o"> <span class="badge badge-warning">11</span>
+				</i> Disabled
+			</a></li>
+			<li class="nav-item dropdown"><a
+				class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+				role="button" data-toggle="dropdown" aria-haspopup="true"
+				aria-expanded="false"> <i class="fa fa-envelope-o"> <span
+						class="badge badge-primary">11</span>
+				</i> Dropdown
+			</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<a class="dropdown-item" href="#">Action</a> <a
+						class="dropdown-item" href="#">Another action</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="#">Something else here</a>
+				</div></li>
+		</ul>
+
+
+		<div style="background-color: WHITE">
+			<label style="color: black">Time Left </label> 
+			<input id="hours" type="text"
+				style="width: 10px; border: none; font-size: 16px; font-weight: bold; color: black;"><font
+				size="5"> : </font> <input id="minutes" type="text"
+				style="width: 20px; border: none; font-size: 16px; font-weight: bold; color: black;">:<font
+				size="5"><input id="seconds" type="text"
+				style="width: 20px; border: none; font-size: 16px; font-weight: bold; color: black;">
+		</div>
+		<!-- menu profile quick info -->
+		<div class="profile clearfix">
+			<div class="profile_pic">
+				<img src="images/user.png" alt="..." class="img-circle profile_img">
+			</div>
+			<div class="profile_info">
+				<span>Welcome Kiran</span>
+				<h2>
+					Reg:<%=session.getAttribute("logedID")%></h2>
+			</div>
+		</div>
+	</div>
+	</nav>
+
+
+
+</body>
+</html>
